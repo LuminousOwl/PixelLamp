@@ -1,0 +1,614 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name=mobile-web-app-capable content=yes>
+<meta name=apple-mobile-web-app-capable content=yes>
+
+<link href="/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+<link href="/icon-hires.png" rel="icon" sizes="192x192" />
+
+
+<style>
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top:6px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* End Toggle */
+
+/* Start Slider */
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+  max-width:200px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #2196F3;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  height: 36px;
+  width: 16px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #2196F3;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  height: 36px;
+  width: 16px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+}
+input[type=range]::-ms-fill-upper {
+  background: #2196F3;
+}
+input[type=range]::-ms-thumb {
+  height: 36px;
+  width: 16px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #2196F3;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+/* End Slider */
+
+
+/* Start time */
+.better-timeinput, input[type=time] {
+    width: 5.5em;
+    text-align: center;
+}
+
+.better-timeinput-meridian {
+    width: 3em;
+    position: relative;
+    display: none;
+}
+
+.better-timeinput-meridian:lang(en-US) {
+    display: inline-block;
+}
+
+.better-timeinput-meridian:after {
+    content: "\25BE";
+    position: absolute;
+    right: 0;
+}
+
+.better-timeinput-meridian > span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.better-timeinput-meridian > select {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+/* just copied default focus indication from Chrome */
+.better-timeinput-meridian > select:focus + span {
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-offset: -2px;
+}
+/* End time */
+
+
+.label {
+  float:left;
+  margin-top:12px;
+}
+
+.select {
+  font-size: 16pt;
+}
+
+.styled-select select {
+   background: #DDDDDD;
+   width: 268px;
+   border:2px;
+   padding: 5px;
+   line-height: 1;
+   border: 2px;
+   border-radius: 4px;
+   height: 34px;
+   margin-left:-6px;
+   }
+
+fieldset {
+  font-family: sans-serif;
+  border: 5px solid #1F497D;
+  border-radius: 5px;
+  padding: 15px;
+  padding-bottom:20px;
+  padding-left:20px;
+  margin-top:16px;
+}
+
+fieldset legend {
+  background: #1F497D;
+  color: #fff;
+  padding: 5px 10px ;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+input[type=number] {
+  font-size:16pt;
+  width:54px;
+}
+
+input[type=time] {
+  font-size:16pt;
+}
+
+body {
+  font-size:16pt;
+}
+
+br {
+  clear: both;
+}
+
+input {
+  float:left;
+}
+
+.line {
+  float:left;
+}
+
+.day-line {
+  float:left;
+  width:260px;
+}
+#clock_offset_minutes {
+  width: 120px;
+}
+
+</style>
+</head>
+<body>
+<fieldset>
+  <legend>Light Settings</legend>
+  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="light_switch" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    <div>
+      <div class="label">Brightness</div>
+      <br>
+      <input type="range" name="light_brightness" min="0" max="255" >
+    </div> 
+    <br> 
+    <div>
+      <div class="label">Mode</div>
+      <br>
+      <div class="styled-select">
+        <select name="light_mode" class="select">
+          <option value="standard">Standard</option>
+          <option value="warm">Warm</option>
+          <option value="cool">Cool</option>
+          <option value="rainbow1">Rainbow 1</option>
+          <option value="rainbow2">Rainbow 2</option>
+        </select>
+      </div>
+    </div>
+        
+</fieldset>
+
+<fieldset>
+  <legend>Clock Display Settings</legend>
+    <div>
+      <div class="label">Timezone Offset (Minutes)</div>
+      <br>
+      <input type="number" id="clock_offset_minutes" name="clock_offset_minutes" placeholder="+/-Minutes" min="-800" max="800" title="Enter the minutes offset from GMT to display">
+    </div> 
+    <br>
+    <div class="label">Display Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="clock_switch" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>    
+    <div>
+      <div class="label">Brightness</div>
+      <br>
+      <input type="range" name="clock_brightness" min="0" max="255" >
+    </div>  
+    <br>
+    <div class="label">24 Hour Mode</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="clock_24_hour" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    <div>
+      <div class="label">Transition</div>
+      <br>
+      <div class="styled-select">
+        <select name="clock_transition" class="select">
+          <option value="none">None</option>
+          <option value="random">Random</option>
+          <option value="x">X</option>
+        </select>
+      </div>
+    </div>
+    <div class="label">Show IP on start</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="clock_show_ip" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>    
+
+
+</fieldset>
+<br>
+<fieldset class="day-line">
+  <legend>Wake Up Sunday</legend>  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="wake_up_0" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    
+    <div class="label">Time</div>
+    <br>
+    <div class="time" id="wake_up_time_0">
+    </div>
+    <br>
+    <div class="label">Duration(minutes)</div>
+    <br>
+    <input type="number" name="wake_up_duration_0" min="0" max="180" step="1">
+</fieldset>
+
+<fieldset class="day-line">
+  <legend>Wake Up Monday</legend>  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="wake_up_1" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    
+    <div class="label">Time</div>
+    <br>
+    <div class="time" id="wake_up_time_1">
+    </div>
+    <br>
+    <div class="label">Duration(minutes)</div>
+    <br>
+    <input type="number" name="wake_up_duration_1" min="0" max="180" step="1">
+</fieldset>
+
+<fieldset class="day-line">
+  <legend>Wake Up Tuesday</legend>  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="wake_up_2" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    
+    <div class="label">Time</div>
+    <br>
+    <div class="time" id="wake_up_time_2">
+    </div>
+    <br>
+    <div class="label">Duration(minutes)</div>
+    <br>
+    <input type="number" name="wake_up_duration_2" min="0" max="180" step="1">
+</fieldset>
+
+<fieldset class="day-line">
+  <legend>Wake Up Wednesday</legend>  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="wake_up_3" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    
+    <div class="label">Time</div>
+    <br>
+    <div class="time" id="wake_up_time_3">
+    </div>
+    <br>
+    <div class="label">Duration(minutes)</div>
+    <br>
+    <input type="number" name="wake_up_duration_3" min="0" max="180" step="1">
+</fieldset>
+
+<fieldset class="day-line">
+  <legend>Wake Up Thursday</legend>  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="wake_up_4" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    
+    <div class="label">Time</div>
+    <br>
+    <div class="time" id="wake_up_time_4">
+    </div>
+    <br>
+    <div class="label">Duration(minutes)</div>
+    <br>
+    <input type="number" name="wake_up_duration_4" min="0" max="180" step="1">
+</fieldset>
+
+<fieldset class="day-line">
+  <legend>Wake Up Friday</legend>  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="wake_up_5" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    
+    <div class="label">Time</div>
+    <br>
+    <div class="time" id="wake_up_time_5">
+    </div>
+    <br>
+    <div class="label">Duration(minutes)</div>
+    <br>
+    <input type="number" name="wake_up_duration_5" min="0" max="180" step="1">
+</fieldset>
+
+<fieldset class="day-line">
+  <legend>Wake Up Saturday</legend>  
+    <div class="label">Off/On</div>
+    <br>
+    <div class="line">
+      <label class="switch">
+        <input name="wake_up_6" type="checkbox">
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br>
+    <div class="label">Time</div>
+    <br>
+    <div class="time" id="wake_up_time_6">
+    </div>
+    <br>
+    <div class="label">Duration(minutes)</div>
+    <br>
+    <input type="number" name="wake_up_duration_6" min="0" max="180" step="1">
+</fieldset>
+
+<script>
+(function() {
+    "use strict";
+
+    var timeDivs = document.getElementsByClassName("time");
+    var timeInputs = [
+      '<input type="time" name="#">',
+      '<input type="number" placeholder="HH" name="#_h" min="0" max="23" step="1" ><div class="line">:</div><input type="number" placeholder="MM" name="#_m" min="0" max="59" step="1"></div>'      
+    ]
+    
+    var inputType;
+    
+    for (var i = 0; i < timeDivs.length; i++) {
+      // Use standard time inputs on mobile/tablet
+      if ("orientation" in window) { // mobile/tablet browsers
+        inputType = 0;
+      } else {
+        inputType = 1;            
+      } 
+      timeDivs[i].innerHTML = timeInputs[inputType].split("#").join(timeDivs[i].id);  
+    }
+    
+    var addListeners = function (inputs) {
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("change", function (e) {
+          var x=new XMLHttpRequest();
+          x.open("post", "/set");
+          if (e.target.type === "checkbox") {
+            x.send(e.target.name + "=" + (e.target.checked ? "on" : "off"));
+          } else {
+            x.send(e.target.name + "=" + e.target.value);
+          }
+           
+          console.log(e.target.value);
+          console.log(e.target.name);
+          console.log(e);
+        });
+      }
+    };
+    
+    addListeners(document.getElementsByTagName('input'));
+    addListeners(document.getElementsByTagName('select'));
+    var hour;
+    
+    
+    var x=new XMLHttpRequest();
+    x.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+         console.log(this.responseText);
+         var settings = this.responseText.split('\n')
+         for (var settingIndex = 0; settingIndex < settings.length; settingIndex+=2) {
+           var name, value, element, current;
+           name = settings[settingIndex].trim();
+           value = settings[settingIndex + 1].trim();
+           console.log("name:" + name + " value:" + value);
+           element = document.getElementsByName(name);
+           
+           
+           if (element.length === 0) {
+             if (name.endsWith("_m")) {
+               name = name.split("_m")[0];
+               element = document.getElementsByName(name)[0];
+               if (parseInt(value) < 10) {
+                 value = "0" + value;
+               }
+               value = "" + hour + ":" + value;
+               element.value = value;
+             } else if (name.endsWith("_h")) {
+               hour = value;
+               if (parseInt(hour) < 10) {
+                 hour = "0" + hour;
+               }
+             }
+             
+           } else if (value === "on" || value === "off") {
+             element = element[0];
+             console.log(value === "on");
+             element.checked = value === "on";
+           } else {
+             element = element[0];
+             if (name.endsWith("_m")) {
+               if (parseInt(value) < 10) {
+                 value = "0" + value;
+               }
+             }
+             element.value = value;
+           }
+           
+           
+         }
+      }
+    };
+    x.open("get", "/settings");
+    x.send();
+    
+    
+}());
+</script>
+</body>
+</html>
